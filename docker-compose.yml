@@ -1,0 +1,32 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: jungle-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jungle
+      POSTGRES_PASSWORD: jungle
+      POSTGRES_DB: wagering
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  localstack:
+    image: localstack/localstack:4.14.0
+    container_name: jungle-localstack
+    restart: unless-stopped
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: sqs
+      AWS_DEFAULT_REGION: sa-east-1
+      DEBUG: 0
+    volumes:
+      - localstack_data:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  postgres_data:
+  localstack_data:
