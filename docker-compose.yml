@@ -5,11 +5,11 @@ services:
     container_name: jungle-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: jungle
-      POSTGRES_PASSWORD: jungle
-      POSTGRES_DB: wagering
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -18,10 +18,10 @@ services:
     container_name: jungle-localstack
     restart: unless-stopped
     ports:
-      - "4566:4566"
+      - "${LOCALSTACK_PORT}:4566"
     environment:
       SERVICES: sqs
-      AWS_DEFAULT_REGION: sa-east-1
+      AWS_DEFAULT_REGION: ${AWS_REGION}
       DEBUG: 0
     volumes:
       - localstack_data:/var/lib/localstack
