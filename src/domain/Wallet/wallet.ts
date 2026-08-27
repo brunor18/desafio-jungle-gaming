@@ -43,6 +43,7 @@ export class Wallet {
         }
 
         this.balance = this.balance.add(amount);
+        this.version += 1;
     }
 
     withdraw(amount: Money): void {
@@ -59,6 +60,7 @@ export class Wallet {
         }
 
         this.balance = newBalance;
+        this.version += 1;
     }
 
     // metodo para verificar se as moedas sao iguais
