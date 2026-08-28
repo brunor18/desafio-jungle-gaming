@@ -6,6 +6,7 @@
       "name": "desafio-jungle-gaming",
       "dependencies": {
         "@mikro-orm/core": "^7.1.13",
+        "@mikro-orm/decorators": "^7.1.14",
         "@mikro-orm/nestjs": "^7.0.2",
         "@mikro-orm/postgresql": "^7.1.13",
         "@nestjs/common": "^11.0.1",
@@ -255,6 +256,8 @@
     "@mikro-orm/cli": ["@mikro-orm/cli@7.1.13", "", { "dependencies": { "@mikro-orm/core": "7.1.13", "mikro-orm": "7.1.13", "yargs": "17.7.2" }, "bin": { "mikro-orm": "cli.js" } }, "sha512-gkksVPW/7Yg4hA6q6ryZmN4pGsrHV40hFIwApydKacVCj7oGOHCjVqINYns1mADKoUJcPMNIpSGoO/0S/eC/0A=="],
 
     "@mikro-orm/core": ["@mikro-orm/core@7.1.13", "", { "peerDependencies": { "dataloader": "2.2.3" }, "optionalPeers": ["dataloader"] }, "sha512-3esu2XDKHSFh8Ki1o2AVavDuWcZ9yt0Gx7jBk6yuYv3K1qxedio45JLaHmdffjM5EqpmeTDb9hqjuqZQtyDC0g=="],
+
+    "@mikro-orm/decorators": ["@mikro-orm/decorators@7.1.14", "", { "peerDependencies": { "@mikro-orm/core": "7.1.14", "reflect-metadata": "^0.1.0 || ^0.2.0" }, "optionalPeers": ["reflect-metadata"] }, "sha512-Bj6VbgIpn5iISeCPqphpPXlud7iUD5+JhwZCoWgsZPAKxU1e6CKflnlHTdr0ASFLBPu3FXQB6sjXFd9a1NtqMA=="],
 
     "@mikro-orm/migrations": ["@mikro-orm/migrations@7.1.13", "", { "dependencies": { "@mikro-orm/sql": "7.1.13" }, "peerDependencies": { "@mikro-orm/core": "7.1.13" } }, "sha512-TR/kCbKLn1qCUSUrNgxhWBLh9yRb7mdyfEmpzbbZi5uVnPszP7vfANJKyMSm6vLhjSeAMWIEx2bUsjIBMLl+Dg=="],
 
