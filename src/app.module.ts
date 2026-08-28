@@ -2,32 +2,36 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
+import { MikroOrmWalletRepository } from './infrastructure/database/repos/mikro-orm-wallet.repository';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true, //carregar o .env
-    }),
+    imports: [
+        ConfigModule.forRoot({
+            isGlobal: true,
+        }),
 
-    MikroOrmModule.forRoot({
-      driver: PostgreSqlDriver,
+        MikroOrmModule.forRoot({
+            driver: PostgreSqlDriver,
 
-      host: process.env.POSTGRES_HOST ?? 'localhost',
-      port: Number(process.env.POSTGRES_PORT ?? 5432),
+            host: process.env.POSTGRES_HOST ?? 'localhost',
+            port: Number(process.env.POSTGRES_PORT ?? 5432),
 
-      user: process.env.POSTGRES_USER ?? 'jungle',
-      password: process.env.POSTGRES_PASSWORD ?? 'jungle',
-      dbName: process.env.POSTGRES_DB ?? 'wagering',
+            user: process.env.POSTGRES_USER ?? 'jungle',
+            password: process.env.POSTGRES_PASSWORD ?? 'jungle',
+            dbName: process.env.POSTGRES_DB ?? 'wagering',
 
-      autoLoadEntities: true,
-      
-    }),
-  ],
+            autoLoadEntities: true,
+        }),
+    ],
 
-  controllers: [AppController],
-  providers: [AppService],
+    controllers: [AppController],
+
+    providers: [
+        AppService,
+        MikroOrmWalletRepository,
+    ],
 })
 export class AppModule {}
