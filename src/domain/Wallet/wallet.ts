@@ -27,6 +27,16 @@ export class Wallet {
         );
     }
 
+    static fromPersistence(props: WalletProps): Wallet {
+    return new Wallet(
+        props.id,
+        props.userId,
+        props.currency,
+        props.balance,
+        props.version,
+    );
+}
+
     getBalance(): Money {
         return this.balance;
     }

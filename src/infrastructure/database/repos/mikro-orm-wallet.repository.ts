@@ -4,6 +4,7 @@ import { InjectEntityManager } from '@mikro-orm/nestjs';
 import { Wallet } from '../../../domain/Wallet/wallet';
 import { WalletRepository } from '../../../domain/Wallet/wallet.repository';
 import { WalletMapper } from '../mappers/wallet.mapper';
+import { WalletEntity } from '../entities/wallet.entity';
 
 export class MikroOrmWalletRepository implements WalletRepository {
     constructor(
@@ -17,5 +18,18 @@ export class MikroOrmWalletRepository implements WalletRepository {
         this.em.persist(entity);
 
         await this.em.flush();
+    }
+
+    async findById(id: string): Promise<Wallet | null> {
+        const entity = await this.em.findOne(
+            WalletEntity,
+            { id },
+        );
+
+        if (!entity) {
+            return null;
+        }
+
+        return WalletMapper.toDomain(entity);
     }
 }
