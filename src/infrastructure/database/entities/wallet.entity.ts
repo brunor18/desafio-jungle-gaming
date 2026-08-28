@@ -6,10 +6,10 @@ export class WalletEntity {
     @PrimaryKey({ type: 'uuid', defaultRaw: 'gen_random_uuid()' })
     id!: string;
 
-    @Property()
+    @Property({ type: 'string' })
     userId!: string;
 
-    @Property()
+    @Property({ type: 'string' })
     currency!: string;
 
     @Property({
@@ -19,7 +19,7 @@ export class WalletEntity {
     })
     balance!: string;
 
-    @Property()
+    @Property({ type: 'number' })
     version!: number;
 
     @Property()
