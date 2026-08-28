@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'bun:test';
 
-import { Money } from '../Money/money';
-import { Wallet } from './wallet';
+import { Money } from '../../Money/money';
+import { Wallet } from '../wallet';
 
 describe('Wallet', () => {
     it('deve criar uma wallet com saldo zero', () => {

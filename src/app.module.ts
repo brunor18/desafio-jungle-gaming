@@ -4,6 +4,8 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import { MikroOrmWalletRepository } from './infrastructure/database/repos/mikro-orm-wallet.repository';
 
+import { WalletModule } from './domain/Wallet/wallet.module';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -25,6 +27,8 @@ import { AppService } from './app.service';
 
             autoLoadEntities: true,
         }),
+
+        WalletModule,
     ],
 
     controllers: [AppController],
