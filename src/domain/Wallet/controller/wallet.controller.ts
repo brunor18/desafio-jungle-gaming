@@ -1,12 +1,9 @@
 import { Body, Controller, Post } from '@nestjs/common';
 
+import { CreateWalletDto } from '../dto/create-wallet.dto';
+
 import { CreateWalletUseCase } from '../create-wallet.use-case';
 
-interface CreateWalletRequest {
-    id: string;
-    userId: string;
-    currency: string;
-}
 
 @Controller('wallets')
 export class WalletController {
@@ -15,7 +12,7 @@ export class WalletController {
     ) {}
 
     @Post()
-    async create(@Body() body: CreateWalletRequest) {
+    async create(@Body() body: CreateWalletDto) {
         await this.createWalletUseCase.execute(body);
 
         return {
